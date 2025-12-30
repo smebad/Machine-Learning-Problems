@@ -85,7 +85,7 @@ def matrix_dot_vector(a: list[list[int | float]], b: list[int | float]) -> list[
 
 ---
 
-## 3. Solution Approach and Logic (Beginner Friendly)
+## 3. Solution Approach and Logic
 
 ### Step-by-Step Approach
 
@@ -181,4 +181,5 @@ if __name__ == "__main__":
     a = [[0, -1], [1, 0]]
     b = [2, 3]
     print(matrix_dot_vector(a, b))  # Output: [-3, 2]
+
 ```
