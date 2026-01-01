@@ -1,14 +1,4 @@
 # Transpose of a Matrix
-# Write a Python function that computes the transpose of a given 2D matrix. The transpose of a matrix is formed by turning its rows into columns and columns into rows. For an mÃn matrix, the transpose will be an nÃm matrix.
-
-# Example:
-# Input:
-# a = [[1, 2, 3], [4, 5, 6]]
-# Output:
-# [[1, 4], [2, 5], [3, 6]]
-# Reasoning:
-# The input is a 2×3 matrix. The transpose swaps rows and columns: the first row [1, 2, 3] becomes the first column, and the second row [4, 5, 6] becomes the second column, resulting in a 3×2 matrix.
-
 # Solution:
 def transpose_matrix(a: list[list[int|float]]) -> list[list[int|float]]:
     """
@@ -39,4 +29,5 @@ if __name__ == "__main__":
 
     # Test case 4
     d = [[1, 2], [3, 4], [5, 6], [7, 8]]
+
     print(transpose_matrix(d))  # Expected output: [[1, 3, 5, 7], [2, 4, 6, 8]]
