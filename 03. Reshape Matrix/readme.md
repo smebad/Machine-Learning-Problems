@@ -1,4 +1,4 @@
-# Reshape Matrix - LeetCode
+# Reshape Matrix
 
 ## 1. Problem Overview
 
@@ -137,3 +137,4 @@ Valid because 2×3 = 3×2 = 6 elements
 ```
 
 Invalid because 2×2 ≠ 4×2
+
