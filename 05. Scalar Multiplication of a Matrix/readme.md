@@ -111,10 +111,7 @@ scalar = 2
 
 ---
 
-## 6. Alternative Approach (Without List Comprehension)
-
-For beginners who prefer explicit loops:
-
+## 6. Alternative Approach Without List Comprehension
 ```python
 def scalar_multiply_manual(matrix, scalar):
     result = []
@@ -160,4 +157,5 @@ if __name__ == "__main__":
     scalar = 3
     result = scalar_multiply(matrix, scalar)
     print(result)  # Output: [[3, 6, 9], [12, 15, 18], [21, 24, 27]]
+
 ```
