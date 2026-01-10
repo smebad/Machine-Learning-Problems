@@ -1,160 +1,104 @@
-# Minimum Operations to Reduce X to Zero - LeetCode
+# Sigmoid Activation Function Understanding
 
-## Problem Description
+## 1. Problem Overview
 
-The problem **"Minimum Operations to Reduce X to Zero"** asks you to find the minimum number of operations required to reduce a given integer `x` to exactly `0`.
+### What is the Sigmoid Activation Function?
 
-You are given:
+The sigmoid activation function is a mathematical function commonly used in machine learning and neural networks. It takes any real-valued number as input and maps it to a value between 0 and 1. Because of this property, sigmoid is often used in binary classification problems where outputs represent probabilities.
 
-* An integer array `nums`
-* An integer `x`
+The sigmoid function is defined as:
 
-In one operation, you can:
+```
+σ(z) = 1 / (1 + e^(-z))
+```
 
-* Remove the **leftmost** element from `nums`, or
-* Remove the **rightmost** element from `nums`
+### The Problem
 
-When an element is removed, its value is subtracted from `x`. The array is modified after every operation.
+Write a Python function that:
 
-Your goal is to **reduce `x` to exactly `0` using the minimum number of operations**. If it is not possible, return `-1`.
+* Takes a single numeric input `z`
+* Computes the sigmoid activation value using the formula
+* Returns the result rounded to four decimal places
 
 ---
 
-## Examples
-
-### Example 1
-
-```
-Input: nums = [1,1,4,2,3], x = 5
-Output: 2
-Explanation: Removing the last two elements (2 and 3) reduces x to zero.
-```
-
-### Example 2
-
-```
-Input: nums = [5,6,7,8,9], x = 4
-Output: -1
-Explanation: It is not possible to reduce x to zero.
-```
-
-### Example 3
-
-```
-Input: nums = [3,2,20,1,1,3], x = 10
-Output: 5
-Explanation: Removing the first two elements and the last three elements reduces x to zero.
-```
-
----
-
-## Key Insight
-
-Instead of thinking about **what to remove**, think about **what to keep**.
-
-If the total sum of the array is `total`, then removing elements whose sum is `x` means **keeping a contiguous subarray whose sum is `total - x`**.
-
-So the problem becomes:
-
-> Find the **longest subarray** with sum `total - x`.
-
-The answer will be:
-
-```
-number of operations = len(nums) - length_of_longest_subarray
-```
-
----
-
-## Sliding Window Solution
-
-### Code With Comments
+## 2. Code Explanation With Comments
 
 ```python
-from typing import List
+import math
 
-class Solution:
-    def minOperations(self, nums: List[int], x: int) -> int:
-        target = sum(nums) - x   # Sum of the subarray we want to keep
-        cur_sum = 0             # Current window sum
-        max_window = -1         # Length of longest valid subarray
-        l = 0                   # Left pointer of the sliding window
+def sigmoid(z: float) -> float:
+    # Apply the sigmoid formula
+    result = 1 / (1 + math.exp(-z))
 
-        for r in range(len(nums)):  # Right pointer moves forward
-            cur_sum += nums[r]
-
-            # Shrink the window if the sum exceeds target
-            while l <= r and cur_sum > target:
-                cur_sum -= nums[l]
-                l += 1
-
-            # If we find a window with the exact target sum
-            if cur_sum == target:
-                max_window = max(max_window, r - l + 1)
-
-        # If no valid subarray was found, return -1
-        return -1 if max_window == -1 else len(nums) - max_window
+    # Round the result to 4 decimal places
+    return round(result, 4)
 ```
 
----
+### Key Points to Remember
 
-## Step-by-Step Approach
-
-1. Compute the total sum of the array.
-2. Convert the problem into finding a **longest subarray with sum = total - x**.
-3. Use a sliding window because all numbers are positive.
-4. Expand the window with the right pointer.
-5. Shrink the window from the left when the sum exceeds the target.
-6. Track the longest valid window.
-7. Subtract its length from the total array size to get the minimum operations.
+* `math.exp(-z)` computes e raised to the power `-z`.
+* The denominator ensures the output stays between 0 and 1.
+* Rounding helps handle floating-point precision.
 
 ---
 
-## Logic Explained in Simple Words
+## 3. Solution Approach and Logic
 
-* Removing numbers from the ends is the same as keeping some middle part.
-* We want to keep the **largest possible middle subarray** whose sum is `total - x`.
-* The more we keep, the fewer operations we need to perform.
-* Sliding window works efficiently because all values in `nums` are positive.
+1. **Compute the exponential term**
 
----
+   * Calculate `exp(-z)` using the math library.
 
-## Time and Space Complexity
+2. **Apply the sigmoid formula**
 
-### Time Complexity: `O(n)`
+   * Add 1 to the exponential value.
+   * Divide 1 by the result to get the sigmoid output.
 
-* Each element is visited at most twice (once by the right pointer and once by the left pointer).
+3. **Round the output**
 
-### Space Complexity: `O(1)`
-
-* Only a few variables are used.
-* No extra data structures are required.
+   * Limit the result to four decimal places for consistency and readability.
 
 ---
 
-## Why This Solution Is Optimal
+## 4. Example Walkthrough
 
-* Any solution must look at all elements at least once.
-* Sliding window achieves this with minimal overhead.
-* No extra memory is used.
-* This is the fastest and most memory-efficient approach possible for this problem.
-
----
-
-## Test Cases
+### Input
 
 ```python
-solution = Solution()
-
-nums1 = [1, 1, 4, 2, 3]
-x1 = 5
-print(solution.minOperations(nums1, x1))  # Output: 2
-
-nums2 = [5, 6, 7, 8, 9]
-x2 = 4
-print(solution.minOperations(nums2, x2))  # Output: -1
-
-nums3 = [3, 2, 20, 1, 1, 3]
-x3 = 10
-print(solution.minOperations(nums3, x3))  # Output: 5
+z = 0
 ```
+
+### Calculation
+
+* `exp(-0) = 1`
+* `1 / (1 + 1) = 0.5`
+
+### Output
+
+```python
+0.5
+```
+
+---
+
+## 5. Test Cases
+
+```python
+# Test Case 1
+z = 0
+print(sigmoid(z))  # Output: 0.5
+
+# Test Case 2
+z = 2
+print(sigmoid(z))  # Output: 0.8808
+
+# Test Case 3
+z = -2
+print(sigmoid(z))  # Output: 0.1192
+```
+
+These test cases show how the sigmoid function behaves:
+
+* Near 0, output is close to 0.5
+* Large positive values approach 1
+* Large negative values approach 0
