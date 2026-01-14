@@ -4,7 +4,7 @@
 
 In linear algebra and machine learning, changing the representation of vectors between different coordinate systems (bases) is a very common task. A **transformation matrix from basis B to basis C** allows us to convert the coordinates of a vector expressed in basis B into coordinates expressed in basis C.
 
-The problem is to compute this transformation matrix given two different bases **B** and **C** for ( \mathbb{R}^3 ). Each basis is provided as a 3×3 matrix, where each column (or row, depending on convention) represents a basis vector.
+The problem is to compute this transformation matrix given two different bases **B** and **C** for R^3. Each basis is provided as a 3×3 matrix, where each column (or row, depending on convention) represents a basis vector.
 
 This concept is important in areas such as feature space transformations, dimensionality reduction, graphics, and numerical linear algebra.
 
@@ -110,4 +110,5 @@ print(transform_basis(B, C))
 * A basis defines how vectors are represented in a space.
 * Changing bases requires matrix inversion and multiplication.
 * The formula ( C^{-1} B ) is fundamental for coordinate transformations.
+
 * NumPy makes linear algebra operations concise and reliable.
