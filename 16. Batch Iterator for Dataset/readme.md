@@ -27,9 +27,6 @@ Almost all modern machine learning frameworks rely on batching internally.
 ---
 
 ## 3. Code With Comments
-
-Below is the provided solution with added comments to clearly explain each step.
-
 ```python
 import numpy as np
 
