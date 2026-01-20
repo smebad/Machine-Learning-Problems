@@ -100,36 +100,7 @@ These values represent the logarithm of the softmax probabilities.
 
 ---
 
-## 6. Alternative (Naive) Approach and Why It Is Worse
-
-A naive implementation would be:
-
-```python
-softmax = np.exp(scores) / np.sum(np.exp(scores))
-log_softmax = np.log(softmax)
-```
-
-### Why this is not ideal:
-
-* Computing `np.exp(scores)` directly can overflow for large values
-* It performs unnecessary operations
-* Less efficient and less stable
-
-The provided solution avoids these problems by combining steps into a single stable formula.
-
----
-
-## 7. Time and Space Complexity
-
-* **Time Complexity:** O(n)  
-  Each element in the array is processed once.
-
-* **Space Complexity:** O(n)  
-  A new array is created for the output.
-
----
-
-## 8. Key Takeaways
+## 6. Key Takeaways
 
 * Log-softmax is commonly used in classification models with cross-entropy loss
 * Subtracting the maximum value improves numerical stability
