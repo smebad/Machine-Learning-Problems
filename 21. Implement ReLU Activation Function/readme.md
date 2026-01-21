@@ -24,9 +24,6 @@ This behavior helps neural networks avoid unnecessary negative activations and m
 ---
 
 ## 3. Code With Comments
-
-Below is your provided solution with added comments to explain each part clearly.
-
 ```python
 # Define a function called relu that takes a single float input z
 def relu(z: float) -> float:
@@ -102,4 +99,5 @@ ReLU is one of the main reasons modern deep learning models work so well.
 * ReLU keeps positive values and removes negative ones
 * It is simple but extremely powerful
 * The formula is just `max(0, z)`
+
 * It is widely used in neural networks
