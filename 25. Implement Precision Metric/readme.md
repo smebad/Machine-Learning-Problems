@@ -30,10 +30,7 @@ Precision answers the question:
 
 ---
 
-## 3. Code Explanation With Comments
-
-Below is your provided solution with added comments to make each step clear.
-
+## 3. Code With Comments
 ```python
 import numpy as np
 
@@ -112,4 +109,5 @@ A high precision means that when the model predicts positive, it is usually corr
 * Precision measures the quality of positive predictions
 * It focuses on how accurate the positive predictions are
 * It is calculated using True Positives and False Positives
+
 * NumPy makes it easy to compute these values using logical conditions
