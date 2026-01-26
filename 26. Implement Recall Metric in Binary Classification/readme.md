@@ -26,7 +26,7 @@ Your task is to compute the recall score. If there are no actual positive sample
 
 ---
 
-## 3. Provided Solution with Comments
+## 3. Solution with Comments
 
 ```python
 import numpy as np
@@ -83,5 +83,6 @@ This implementation is efficient because it uses NumPy operations instead of man
 ---
 
 ## 7. Key Takeaway
+
 
 Recall is a crucial metric when missing positive cases is risky. This implementation correctly computes recall by counting true positives and false negatives and applying the standard formula in a safe and reliable way.
